@@ -1,0 +1,46 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title #{name}: #{message}
+    style.
+      body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; }
+      h1, h2, h3 { margin: 0; padding: 8px; font-weight: normal; }
+      h1 { background: #cc2a41; color: #fff; }
+      h2 { background: #e8caa4; color: #8b7962; font-size: 16px; margin-bottom: 10px; }
+      h3 { font-size: 14px; }
+      .code-excerpt { border-radius: 3px; border: 1px solid #eee; padding: 8px 0; margin: 8px; }
+      .code-excerpt .line { overflow: hidden; height: 20px; }
+      .code-excerpt .line:hover { background: #eee; }
+      .code-excerpt .line.error { background: #ffecec; }
+      .code-excerpt .line.error u { background: #f8cbcb; text-decoration: none; }
+      .code-excerpt .line-number { float: left; width: 28px; line-height: 20px; text-align: center; font-family: monospace, courier; color: #aaa; user-select: none; -webkit-user-select: none; -moz-user-select: none; }
+      .code-excerpt .line-value { float: left; padding: 0 8px; line-height: 20px; }
+      .code-excerpt pre { margin: 0; font-family: Monaco, monospace, courier; font-size: 12px; }
+      .stack { padding: 0 8px; }
+  body
+    h1= name
+    h2= message
+    h3 Extracted code (error at <strong>##{line}:#{column}</strong>):
+    .code-excerpt
+      each around, i in excerpt
+        -
+          num = excerpt_start + i
+          isLine = num === line
+        .line(class=isLine ? "error" : "")
+          .line-number= num
+          .line-value
+            pre
+              -
+                formatted = around
+                if (isLine) {
+                  nextSpace  = around.indexOf(" ", column)
+                  nextSpace  = nextSpace > 0 ? nextSpace : around.length
+                  underlined = "<u>" + around.slice(column-1, nextSpace) + "</u>"
+                  formatted  = around.slice(0,column-1) + underlined + around.slice(nextSpace, around.length)
+                }
+              code!= formatted
+
+    h3 Full stack trace:
+    .stack
+      pre= stack

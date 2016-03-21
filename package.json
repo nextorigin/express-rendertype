@@ -1,0 +1,45 @@
+{
+  "name": "express-rendertype",
+  "version": "1.0.1",
+  "description": "Express middleware to (automatically) render content and errors to content-type",
+  "main": "lib/rendertype.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/iced-coffee-script/bin/coffee --bare --map --runtime node -o lib/ -c src/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/doublerebel/express-rendertype.git"
+  },
+  "keywords": [
+    "express",
+    "middleware",
+    "contenttype",
+    "error",
+    "render",
+    "mime"
+  ],
+  "author": "doublerebel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/doublerebel/express-rendertype/issues"
+  },
+  "homepage": "https://github.com/doublerebel/express-rendertype#readme",
+  "dependencies": {
+    "errify": "^1.0.0",
+    "iced-runtime": "^1.0.3",
+    "pug": "^2.0.0-alpha1",
+    "restify-errors": "^4.2.1",
+    "source-map-support": "^0.4.0"
+  },
+  "optionalDependencies": {
+    "xml": "^1.0.1",
+    "js-yaml": "^3.5.5"
+  },
+  "devDependencies": {
+    "iced-coffee-script": "^108.0.9"
+  }
+}
