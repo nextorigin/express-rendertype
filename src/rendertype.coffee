@@ -6,7 +6,7 @@ Fancy  = require "./fancy"
 class RenderType
   @text: (path, obj) -> @send obj.toString()
   @html: (path, obj) -> @render path, obj
-  @json: (path, obj) -> @send obj
+  @json: (path, obj) -> @json obj
   @yaml: (path, obj) -> @send (require "js-yaml").safeDump obj, skipInvalid: true
   @xml:  (path, obj) -> @send (require "xml") obj, indent: ' '
   @auto: (fallback = false, preference = ["yaml", "json", "html", "text"]) -> (req, res, next) =>
