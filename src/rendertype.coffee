@@ -13,6 +13,7 @@ class RenderType
     type   = req.accepts preference
     type or= fallback
     next new Errors.NotAcceptableError unless type
+    res.type type
     res.rendr = @[type].bind res
     next()
 
