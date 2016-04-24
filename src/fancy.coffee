@@ -1,10 +1,7 @@
-require "source-map-support/register"
-
-
 fs     = require "fs"
-pug    = require "pug"
 path   = require "path"
 util   = require "util"
+pug    = require "pug"
 errify = require "errify"
 
 template = fs.readFileSync (path.join __dirname, "..", "templates", "error.pug"), "utf-8"

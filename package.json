@@ -31,15 +31,14 @@
   "dependencies": {
     "errify": "^1.0.0",
     "iced-runtime": "^1.0.3",
-    "pug": "^2.0.0-alpha1",
-    "restify-errors": "^4.2.1",
-    "source-map-support": "^0.4.0"
+    "pug": "^2.0.0-alpha6",
+    "restify-errors": "^4.2.1"
   },
   "optionalDependencies": {
     "xml": "^1.0.1",
-    "js-yaml": "^3.5.5"
+    "js-yaml": "^3.6.0"
   },
   "devDependencies": {
-    "iced-coffee-script": "^108.0.9"
+    "iced-coffee-script": "^108.0.11"
   }
 }

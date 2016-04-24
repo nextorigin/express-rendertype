@@ -1,9 +1,6 @@
-require "source-map-support/register"
-
-
 Errors = require "restify-errors"
-Fancy  = require "./fancy"
 errify = require "errify"
+Fancy  = require "./fancy"
 
 
 class RenderType
@@ -47,8 +44,8 @@ class RenderTypedErrors extends RenderType
 class FancyErrors extends RenderTypedErrors
   @text: (err, req, res, next) -> super message: Fancy.stringify err
   @html: (err, req, res, next) ->
-    esc = errify next
-    await Fancy.html err, esc defer html
+    ideally = errify next
+    await Fancy.html err, ideally defer html
     res.type "html"
     res.send html
 
