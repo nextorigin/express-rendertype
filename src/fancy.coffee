@@ -19,26 +19,28 @@ class Fancy
     setImmediate logger, err, @stringify err
 
   @html: (err, cb) ->
-    esc = errify cb
+    ideally = errify cb
 
     stack = @stringify err
     if err instanceof Error
       [_, line] = err.stack.split "\n"
       result = /at\s(.+\s)?\(?(.+)\:([0-9]+)\:([0-9]+)/.exec line
-      path = result[2]
-      row = +result[3]
-      col = +result[4]
 
-      await fs.readFile path, "utf-8", esc defer file
-      file    = file.split "\n"
-      start   = if row - 6 < 0 then 0 else row - 6
-      end     = row + 6
-      excerpt = file[start..end]
+      if result
+        name = result[2]
+        row = +result[3]
+        col = +result[4]
 
-    else
+        await fs.readFile name, "utf-8", ideally defer file
+        file    = file.split "\n"
+        start   = if row - 6 < 0 then 0 else row - 6
+        end     = row + 6
+        excerpt = file[start..end]
+
+    unless name
       err = new Error err
       row = col = start = 0
-      excerpt = stack.split "\n"
+      excerpt = stack and (stack.split "\n") or []
       stack = err.stack
 
     cb null, template
