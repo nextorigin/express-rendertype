@@ -1,6 +1,6 @@
 {
   "name": "express-rendertype",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Express middleware to (automatically) render content and errors to content-type",
   "main": "lib/rendertype.js",
   "directories": {
@@ -12,22 +12,27 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/doublerebel/express-rendertype.git"
+    "url": "git://github.com/nextorigin/express-rendertype.git"
   },
   "keywords": [
     "express",
     "middleware",
     "contenttype",
+    "content-type",
     "error",
+    "stacktrace",
     "render",
-    "mime"
+    "mime",
+    "excerpt",
+    "exception",
+    "autodetect"
   ],
   "author": "doublerebel",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/doublerebel/express-rendertype/issues"
+    "url": "https://github.com/nextorigin/express-rendertype/issues"
   },
-  "homepage": "https://github.com/doublerebel/express-rendertype#readme",
+  "homepage": "https://github.com/nextorigin/express-rendertype#readme",
   "dependencies": {
     "errify": "^1.0.0",
     "iced-runtime": "^1.0.3",
