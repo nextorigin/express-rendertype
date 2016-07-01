@@ -10,11 +10,12 @@ class RenderType
   @yaml: (path, obj) -> @send (require "js-yaml").safeDump obj, skipInvalid: true
   @xml:  (path, obj) -> @send (require "xml") obj, indent: ' '
   @auto: (fallback = false, preference = ["yaml", "json", "html", "text"]) -> (req, res, next) =>
-    type   = req.accepts preference
-    type or= fallback
-    next new Errors.NotAcceptableError unless type
-    res.type type
-    res.rendr = @[type].bind res
+    res.rendr = =>
+      type   = req.accepts preference
+      type or= fallback
+      next new Errors.NotAcceptableError unless type
+      res.type type
+      @[type].apply res, arguments
     next()
 
 
@@ -39,7 +40,8 @@ class RenderTypedErrors extends RenderType
 
     res.status err.status or 500
     res.setHeader "X-Content-Type-Options", "nosniff"
-    (@[type].bind res) arguments...
+    res.type type
+    @[type].apply res, arguments...
 
 
 class FancyErrors extends RenderTypedErrors
