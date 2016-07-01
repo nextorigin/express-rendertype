@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/iced-coffee-script/bin/coffee --bare --map --runtime node -o lib/ -c src/*"
+    "build": "iced --bare --map --runtime node -o lib/ -c src/*"
   },
   "repository": {
     "type": "git",
