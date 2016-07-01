@@ -1,6 +1,6 @@
 {
   "name": "express-rendertype",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Express middleware to (automatically) render content and errors to content-type",
   "main": "lib/rendertype.js",
   "directories": {
