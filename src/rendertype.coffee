@@ -37,6 +37,10 @@ class RenderTypedErrors extends RenderType
     if err.statusCode and not (err instanceof Error)
       {message}   = err
       err         = Errors.makeErrFromCode err.statusCode
+      trimTo      = 0
+      stack       = (Fancy.stringify err).split "\n"
+      trimTo      = i for line, i in stack when line.match /at next/
+      err.stack   = stack[trimTo..-1].join "\n"
       err.message = message if message
 
     log err
