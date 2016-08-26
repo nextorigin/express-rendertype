@@ -41,7 +41,7 @@ class RenderTypedErrors extends RenderType
     res.status err.status or 500
     res.setHeader "X-Content-Type-Options", "nosniff"
     res.type type
-    @[type].apply res, arguments...
+    @[type].apply res, arguments
 
 
 class FancyErrors extends RenderTypedErrors
