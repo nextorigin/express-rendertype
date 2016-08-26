@@ -31,14 +31,18 @@ class RenderTypedErrors extends RenderType
     type   = req.accepts preference
     type or= fallback
 
-    err = Errors.makeErrFromCode err.status if err.status and not (err instanceof Error)
-    err.status = err.statusCode if err.statusCode and not err.status
-    if err.status < 400 then err.status = 500
+    err.statusCode = err.status if err.status and not err.statusCode
+    if err.statusCode < 400 or not err.statusCode then err.statusCode = 500
+
+    if err.statusCode and not (err instanceof Error)
+      {message}   = err
+      err         = Errors.makeErrFromCode err.statusCode
+      err.message = message if message
 
     log err
     return req.socket.destroy() if res._header
 
-    res.status err.status or 500
+    res.status err.statusCode
     res.setHeader "X-Content-Type-Options", "nosniff"
     res.type type
     @[type].apply res, arguments
