@@ -1,5 +1,14 @@
 # express-rendertype
+
+[![Build Status][ci-master]][travis-ci]
+[![Coverage Status][coverage-master]][coveralls]
+[![Dependency Status][dependency]][david]
+[![devDependency Status][dev-dependency]][david]
+[![Downloads][downloads]][npm]
+
 Express middleware to (automatically) render content and errors to content-type
+
+[![NPM][npm-stats]][npm]
 
 This is basically a mashup of
 
@@ -103,3 +112,15 @@ MIT Licensed. (C) 2016 doublerebel
 [3]: https://github.com/trygve-lie/express-error-responses/blob/master/lib/middleware.js
 
 [4]: https://github.com/restify/errors
+
+  [ci-master]: https://img.shields.io/travis/nextorigin/express-rendertype/master.svg?style=flat-square
+  [travis-ci]: https://travis-ci.org/nextorigin/express-rendertype
+  [coverage-master]: https://img.shields.io/coveralls/nextorigin/express-rendertype/master.svg?style=flat-square
+  [coveralls]: https://coveralls.io/r/nextorigin/express-rendertype
+  [dependency]: https://img.shields.io/david/nextorigin/express-rendertype.svg?style=flat-square
+  [david]: https://david-dm.org/nextorigin/express-rendertype
+  [dev-dependency]: https://img.shields.io/david/dev/nextorigin/express-rendertype.svg?style=flat-square
+  [david-dev]: https://david-dm.org/nextorigin/express-rendertype#info=devDependencies
+  [downloads]: https://img.shields.io/npm/dm/express-rendertype.svg?style=flat-square
+  [npm]: https://www.npmjs.org/package/express-rendertype
+  [npm-stats]: https://nodei.co/npm/express-rendertype.png?downloads=true&downloadRank=true&stars=true
