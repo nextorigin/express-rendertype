@@ -1,13 +1,16 @@
 {
   "name": "express-rendertype",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Express middleware to (automatically) render content and errors to content-type",
   "main": "lib/rendertype.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run test:modules && npm run test:report",
+    "test:modules": "mocha --recursive --compilers coffee:iced-coffee-script/register --require iced-coffee-coverage/register-istanbul test/",
+    "test:report": "istanbul report",
+    "test:coverage": "istanbul report text-summary lcov",
     "watch": "iced --watch --bare --map --runtime node -o lib/ -c src/*",
     "build": "iced --bare --map --runtime node -o lib/ -c src/*"
   },
@@ -45,6 +48,12 @@
     "js-yaml": "^3.6.0"
   },
   "devDependencies": {
-    "iced-coffee-script": "^108.0.11"
+    "chai": "^3.5.0",
+    "coveralls": "^2.11.12",
+    "iced-coffee-coverage": "^1.0.3",
+    "iced-coffee-script": "^108.0.11",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.0.2",
+    "sinon": "^1.17.5"
   }
 }
